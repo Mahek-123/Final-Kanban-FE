@@ -7,9 +7,11 @@ import { BoardViewComponent } from './board-view/board-view.component';
 import { TaskComponent } from './task/task.component';
 import { AuthGuardGuard } from './service/auth-guard.guard';
 import { CanDeactivatedTeam } from './service/can-deactivate-guard.guard';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:'/login', pathMatch:'full'},
+  {path:'', component:HomepageComponent},
+  // {path:'', redirectTo:'/login', pathMatch:'full'},
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent,  canDeactivate:[CanDeactivatedTeam] },
   {path:'project', component:ProjectComponent},

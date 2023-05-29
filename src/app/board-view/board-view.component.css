@@ -201,12 +201,14 @@ mat-sidenav-content {
 } 
 
 #side-nav {
+
   text-align: left;
   position: fixed;
   padding-top: 82px;
   width: 230px;
-  background-image: linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, .5) 50%);
-  background-color: #d2c9fd;
+  background-image:url(../../assets/bg.png);
+
+  /* background-color: #d2c9fd; */
 }
 
 .mat-drawer-content {

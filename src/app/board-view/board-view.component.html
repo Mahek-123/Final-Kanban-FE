@@ -40,28 +40,32 @@
       </div>
       <div>
         <button mat-icon-button (click)="sortName()" matTooltip="Sort by Name" class="icn"><i
-            class="fa fa-sort-alpha-asc" style="font-size:18px;"></i></button>
-        <button mat-icon-button (click)="sortPriority()" matTooltip="Sort by Priority" class="icn"><img
-            src="../../assets/Arrow.png"></button>
+          class="fa fa-sort-alpha-asc" style="font-size:18px;"></i></button>
+      <button mat-icon-button (click)="sortPriority()" matTooltip="Sort by Priority" class="icn"><img
+          src="../../assets/Arrow.png"></button>
 
-        <button mat-button [matMenuTriggerFor]="menu" class="icn" (click)="getNotification()"><i
-            matBadge="{{notificationSize}}" matBadgeSize="medium" matBadgeColor="accent" class="fa fa-bell"
-            style="font-size:22px;"></i></button>
-        <mat-menu #menu="matMenu">
-          <div class="notification">
-            <button class="noti" mat-menu-item (click)="readAll()">Read All</button>
-            <button mat-menu-item *ngFor="let msg of notificationArray" (click)="readMsg(msg[0])"
-              [ngClass]="seenUnseen(msg[1])">
-              <p>{{msg[0]}}</p>
-            </button>
-          </div>
-        </mat-menu>
-        <button mat-button class="icn" (click)="download()"><i class="fa fa-download"
-            style="font-size:22px;"></i></button>
-        <button mat-button class="icn" (click)="addColumn()"><i class="fa fa-plus" style="font-size:22px;"></i></button>
-        <button mat-button class="icn" (click)="shareBoard()"><i class="fa fa-share" style="font-size:22px;"></i></button>
-        <button mat-button class="icn" (click)="toggleArchive()"><i class="fa fa-folder-open" style="font-size:22px;"></i></button>
-
+      <button mat-button [matMenuTriggerFor]="menu" class="icn" (click)="getNotification()"><i
+          matBadge="{{notificationSize}}" matBadgeSize="medium" matBadgeColor="accent" class="fa fa-bell"
+          style="font-size:22px;" matTooltip="Notification"></i></button>
+      <mat-menu #menu="matMenu">
+        <div class="notification">
+          <button class="noti" mat-menu-item (click)="readAll()">Read All</button>
+          <button mat-menu-item *ngFor="let msg of notificationArray" (click)="readMsg(msg[0])"
+            [ngClass]="seenUnseen(msg[1])">
+            <p>{{msg[0]}}</p>
+          </button>
+        </div>
+      </mat-menu>
+      <button mat-button class="icn" (click)="download()" matTooltip="Download Board"><i class="fa fa-download"
+          style="font-size:22px;"></i></button>
+      <button mat-button class="icn" (click)="addColumn()" matTooltip="Add new Column"><i class="fa fa-plus"
+          style="font-size:22px;"></i></button>
+      <button mat-button class="icn" (click)="shareBoard()" matTooltip="Share Board"><i class="fa fa-share"
+          style="font-size:22px;"></i></button>
+      <button *ngIf="!taskArchive" mat-button class="icn" (click)="toggleArchive()" matTooltip="Open Archive"><i
+          class="fa fa-folder-open" style="font-size:22px;"></i></button>
+      <button *ngIf="taskArchive" mat-button class="icn" (click)="toggleArchive()" matTooltip="Close Archive"><i
+          class="fa fa-folder" style="font-size:22px;"></i></button>
       </div>
     </div>
     <div cdkDropListGroup class="kanban-main">
@@ -83,8 +87,8 @@
           <div class="example-box" *ngFor="let task of getColumnTasks(columnName)" cdkDrag
             (cdkDragStarted)="onDragStart(task)">
 
-            <mat-card [ngClass]="getColorClass(task.priority)" *ngIf="getTaskStatus(task.status)">
-              <mat-card-header class="container" (click)="editTask(task)">
+            <mat-card [ngClass]="getColorClass(task.priority)" (click)="editTask(task)">
+              <mat-card-header class="container">
                 <mat-card-title>{{task.name}}</mat-card-title>
                 <small *ngIf="task.createDate" id="createdate"
                   matTooltip="Create date">{{task.createDate.slice(0,10)}}</small>

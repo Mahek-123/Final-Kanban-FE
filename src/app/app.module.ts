@@ -34,6 +34,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { EditTaskComponent } from './edit-task/edit-task.component';
 import { ConfirmmessageComponent } from './confirmmessage/confirmmessage.component';
 import { CanDeactivatedTeam } from './service/can-deactivate-guard.guard';
+import { HomepageComponent } from './homepage/homepage.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { CanDeactivatedTeam } from './service/can-deactivate-guard.guard';
     BoardViewComponent,
     TaskComponent,
     EditTaskComponent,
-    ConfirmmessageComponent
+    ConfirmmessageComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
